@@ -62,6 +62,31 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
         }
         //全体配列をファイルに保存する
         file_put_contents($FILE, json_encode($NEWBOARD));
+
+    }else if(isset($_POST['jpgid_value'])){
+        if($_SERVER["REQUEST_METHOD"] === "POST"){
+            if($_FILES["userfile"]["error"] == UPLOAD_ERR_OK){
+             $tempfile = $_FILES["userfile"]["tmp_name"];
+             $filename = $_FILES["userfile"]["name"];
+             $jpgid= $_POST["jpgid_value"];  
+             $filename = mb_convert_encoding($jpgid.".jpg", "cp932", "utf8");
+             $result = move_uploaded_file($tempfile, "../jpg/".$filename);
+             if($result == TRUE){
+              $message ="upload success";
+             }
+             else{
+              $message ="upload fail";
+             }
+            }
+            elseif($_FILES["userfile"]["error"] == UPLOAD_ERR_NO_FILE) {
+             $message ="upload fail";
+            }
+            else {
+             $message ="upload fail";
+            }
+            echo $message;
+           }
+
     }
 
     //header()で指定したページにリダイレクト
@@ -113,12 +138,27 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
                 <?php echo h($DATA[2]); ?>
             </td>
             <td>
+                 <img src=../jpg/<?php echo $DATA[0]; ?>.jpg  width=150 height=135><br>
+            </td>
+
+
+
+            <td>
+
+            
                 <!--削除-->
 　　　　　　　　　<!--この時その投稿のidがサーバーに送信される-->
                 <input type= "hidden" name= "del" value= "<?php echo $DATA[0]; ?>">
                 <input type= "submit" value= "削除">
             </td>
         </form>
+            <form action="" method="post" enctype="multipart/form-data">
+            <p>file：<input type="file" name="userfile" size="40" /></p>
+            <p><input type="hidden" size=5 id="jpgid_value" name="jpgid_value" value= "<?php echo $DATA[0]; ?>"></p>
+            <p><input type="submit" value="upload" /></p>
+        </form>
+
+
 
         </tr>
         <?php endforeach; ?>
