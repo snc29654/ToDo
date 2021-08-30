@@ -147,6 +147,8 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
             
                 <!--削除-->
 　　　　　　　　　<!--この時その投稿のidがサーバーに送信される-->
+                <p>左記内容を消してから</p>
+                <p>削除ボタンを押してください</p>
                 <input type= "hidden" name= "del" value= "<?php echo $DATA[0]; ?>">
                 <input type= "submit" value= "削除">
             </td>
