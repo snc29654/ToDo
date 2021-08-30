@@ -150,12 +150,15 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
                 <input type= "hidden" name= "del" value= "<?php echo $DATA[0]; ?>">
                 <input type= "submit" value= "削除">
             </td>
+            <td>
+
         </form>
             <form action="" method="post" enctype="multipart/form-data">
             <p>file：<input type="file" name="userfile" size="40" /></p>
             <p><input type="hidden" size=5 id="jpgid_value" name="jpgid_value" value= "<?php echo $DATA[0]; ?>"></p>
             <p><input type="submit" value="upload" /></p>
         </form>
+        </td>
 
 
 
