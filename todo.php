@@ -84,7 +84,6 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
             else {
              $message ="upload fail";
             }
-            echo $message;
            }
 
     }
@@ -113,10 +112,10 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
         <!--投稿-->
         <form method= "post">
         　　<p>題名</p>
-            <textarea name="kind" ROWS=1 COLS=50></textarea>
+            <textarea name="kind" ROWS=1 COLS=30></textarea>
             <input type= "submit" value= "投稿"></br>
             <p>内容</p>
-            <textarea name="txt" ROWS=10 COLS=120></textarea>
+            <textarea name="txt" ROWS=10 COLS=80></textarea>
         </form>    
 
         <table style= "border-collapse: collapse">
@@ -130,12 +129,12 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
                 <?php echo $DATA[1]; ?>
             </td>
             <td>
+            <?php echo"<textarea name=\"kind\" ROWS=1 COLS=30 style=\"background-color:#bde9ba\">$DATA[3] </textarea>"?></br>
                 <!--kind-->
-                <?php echo $DATA[3]; ?>
             </td>
             <td>
                 <!--テキスト-->
-                <?php echo h($DATA[2]); ?>
+                <?php echo "<textarea name=\"txt\" ROWS=10 COLS=80 style=\"background-color:#bde9ba\">$DATA[2]</textarea>"?>
             </td>
             <td>
                  <img src=../jpg/<?php echo $DATA[0]; ?>.jpg  width=150 height=135><br>
