@@ -86,6 +86,11 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
             }
            }
 
+
+    }else if(isset($_POST['eqjpgid'])){
+        $jpgno =$_POST['eqjpgid'];
+        echo "<img src=../jpg/$jpgno.jpg><br>";
+        exit;
     }
 
     //header()で指定したページにリダイレクト
@@ -161,6 +166,16 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
             <p><input type="submit" value="upload" /></p>
         </form>
         </td>
+
+        <td>
+        </form>
+        <form action="" method="post" enctype="multipart/form-data">
+        <p><input type="hidden" size=5 id="eqjpgid" name="eqjpgid" value= "<?php echo $DATA[0]; ?>"></p>
+        <p><input type="submit" value="原寸" /></p>
+        </form>
+        </td>
+
+
 
 
 
